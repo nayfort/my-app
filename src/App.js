@@ -31,5 +31,3 @@ const App = (props) => {
 };
 
 export default App;
-
-// this is an app
