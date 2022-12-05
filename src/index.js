@@ -3,10 +3,10 @@ import store from "./redux/state";
 import React from "react";
 import './index.css'
 import App from "./App";
-import root from "react-dom";
+import {createRoot} from "react-dom";
 
 let rerenderEntireTree = (state) => {
-    root.render(
+    createRoot.render(
         <React.StrictMode>
             <App state={state} dispatch={store.dispatch.bind(store)} store={store}/>
         </React.StrictMode>, document.getElementById('root')
