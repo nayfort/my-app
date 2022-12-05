@@ -3,13 +3,15 @@ import store from "./redux/state";
 import React from "react";
 import './index.css'
 import App from "./App";
-import {createRoot} from "react-dom";
+import ReactDOM from "react-dom";
+import {BrowserRouter} from "react-router-dom";
+
 
 let rerenderEntireTree = (state) => {
-    createRoot.render(
-        <React.StrictMode>
+    ReactDOM.render(
+        <BrowserRouter>
             <App state={state} dispatch={store.dispatch.bind(store)} store={store}/>
-        </React.StrictMode>, document.getElementById('root')
+        </BrowserRouter>, document.getElementById('root')
     );
 }
 

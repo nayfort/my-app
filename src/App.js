@@ -9,7 +9,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 
 const App = (props) => {
     return (
@@ -18,15 +18,13 @@ const App = (props) => {
                 <Header/>
                 <NavBar/>
                 <div className='app-wrapper-content'>
-                    <Routes>
-                        <Route path="/profile" element={<Profile profilePage={props.state.profilePage}
+                        <Route path="/profile" render={() => <Profile profilePage={props.state.profilePage}
                                                                  dispatch={props.dispatch}
                         />}/>
-                        <Route path="/dialogs" element={<Dialogs store={props.store} />}/>
-                        <Route path="/news" element={<News/>}/>
-                        <Route path="/music" element={<Music/>}/>
-                        <Route path="/settings" element={<Settings/>}/>
-                    </Routes>
+                        <Route path="/dialogs" render={() => <Dialogs store={props.store} />}/>
+                        <Route path="/settings" render={() => <Settings/>}/>
+                        <Route path="/music" render={() => <Music/>}/>
+                        <Route path="/news" render={() => <News/>}/>
                 </div>
             </div>
         </BrowserRouter>);

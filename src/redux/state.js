@@ -44,7 +44,7 @@ let store = {
         dialogsReducer(this._state.dialogsPage, action);
         sidebarReducer(this._state.sidebar, action);
 
-        this._state._callSubscriber();
+        this._callSubscriber(this._state);
     }
 }
 
