@@ -1,8 +1,6 @@
 import React from "react";
 import classes from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
-import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialogs-reducer";
-
 
 const Message = (props) => {
     return <div className={classes.message}>{props.message}</div>
@@ -10,18 +8,18 @@ const Message = (props) => {
 
 const Dialogs = (props) => {
 
-    let state = props.store.getState().dialogsPage;
+    let state = props.dialogsPage;
 
     let dialogsElements = state.dialogs.map((d,index) => <DialogItem key={index} name={d.name} id={d.id}/>)
     let messagesElements = state.messages.map((m,index) => <Message key={index} message={m.message}/>)
     let newMessageBody = state.newMessageBody;
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator())
+        props.sendMessage()
     }
     let onNewMessageChange = (event) => {
         let body = event.target.value;
-        props.store.dispatch(updateNewMessageBodyCreator(body))
+        props.updateNewMessageBody(body)
     }
 
     return (
