@@ -2,8 +2,6 @@ import React from "react";
 import {addPostActionCreator} from "../../../redux/profile-reducer";
 import {updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
-import {mapStateToPropsFactory} from "react-redux/es/connect/mapStateToProps";
-import {mapDispatchToPropsFactory} from "react-redux/es/connect/mapDispatchToProps";
 import {connect} from "react-redux";
 
 const mapStateToProps = (state) => {
