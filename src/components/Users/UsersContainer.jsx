@@ -8,7 +8,6 @@ import {
     unfollow, toggleFollowingProgress
 } from "../../redux/users-reducers";
 import React from "react";
-import axios from "axios";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import {usersAPI} from "../../api/api";
