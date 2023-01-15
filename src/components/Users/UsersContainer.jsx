@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {
     follow,
-    setCurrentPage,
+    requestUsers,
     unfollow, toggleFollowingProgress
 } from "../../redux/users-reducers";
 import React from "react";
@@ -64,6 +64,6 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps,{
-        follow, unfollow, setCurrentPage,
-        toggleFollowingProgress, getUsers})
+        follow, unfollow,
+        toggleFollowingProgress, getUsers: requestUsers})
 ) (UsersContainer)
