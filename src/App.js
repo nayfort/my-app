@@ -10,10 +10,11 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import store from "./redux/redux-store";
 
 class App extends React.Component {
     componentDidMount() {
@@ -26,6 +27,7 @@ class App extends React.Component {
 
         return (
             <BrowserRouter>
+                <Provider store={store}>
                 <div className="app-wrapper">
                     <HeaderContainer/>
                     <NavBar/>
@@ -41,6 +43,7 @@ class App extends React.Component {
                         <Route path="/login" render={() => <Login/>}/>
                     </div>
                 </div>
+                    </Provider>
             </BrowserRouter>);
     }
 }
