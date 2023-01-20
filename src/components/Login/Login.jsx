@@ -7,7 +7,7 @@ import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import style from './../common/FormsControls/FormsControls.module.css'
 
-const LoginForm = ({handleSubmit, error}) => {
+export const LoginForm = ({handleSubmit, error}) => {
     return (
         <form onSubmit={handleSubmit}>
                 {CreateField('Email', 'email', [required], Input)}
@@ -27,8 +27,8 @@ const LoginForm = ({handleSubmit, error}) => {
 const LoginReduxForm = reduxForm ({form: 'login'})(LoginForm)
 
 const Login = (props) => {
-    const onSubmit = (formData) => {
-    props.login(formData.email, formData.password, formData.rememberMe)
+    const onSubmit = data => {
+    props.login(data.email, data.password, data.rememberMe)
     }
 
     if(props.isAuth) {
@@ -42,7 +42,7 @@ const Login = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth, authError:state.auth.authError
 })
 
 export default connect(mapStateToProps, {login})(Login);

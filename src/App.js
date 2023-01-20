@@ -20,31 +20,29 @@ class App extends React.Component {
     componentDidMount() {
         this.props.initializeApp();
     }
+
     render() {
-        if(!this.props.initialized) {
+        if (!this.props.initialized) {
             return <Preloader/>
         }
 
         return (
-            <BrowserRouter>
-                <Provider store={store}>
-                <div className="app-wrapper">
-                    <HeaderContainer/>
-                    <NavBar/>
-                    <div className='app-wrapper-content'>
-                        <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+                    <div className="app-wrapper">
+                        <HeaderContainer/>
+                        <NavBar/>
+                        <div className='app-wrapper-content'>
+                            <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
 
-                        <Route path="/users" render={() => <UsersContainer/>}/>
+                            <Route path="/users" render={() => <UsersContainer/>}/>
 
-                        <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-                        <Route path="/settings" render={() => <Settings/>}/>
-                        <Route path="/music" render={() => <Music/>}/>
-                        <Route path="/news" render={() => <News/>}/>
-                        <Route path="/login" render={() => <Login/>}/>
+                            <Route path="/dialogs" render={() => <DialogsContainer/>}/>
+                            <Route path="/settings" render={() => <Settings/>}/>
+                            <Route path="/music" render={() => <Music/>}/>
+                            <Route path="/news" render={() => <News/>}/>
+                            <Route path="/login" render={() => <Login/>}/>
+                        </div>
                     </div>
-                </div>
-                    </Provider>
-            </BrowserRouter>);
+        );
     }
 }
 
@@ -52,6 +50,18 @@ const mapStateToProps = (state) => ({
     initialized: state.app.initialized
 })
 
-export default compose (
+let AppContainer = compose(
     withRouter,
-    connect(mapStateToProps, {initializeApp})) (App);
+    connect(mapStateToProps, {initializeApp}))(App);
+
+let MainApp = (props) => {
+    return (
+        <BrowserRouter>
+        <Provider store={store}>
+            <AppContainer />
+        </Provider>
+    </BrowserRouter>
+    )
+}
+
+export default MainApp;
