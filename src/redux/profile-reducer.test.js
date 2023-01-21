@@ -22,7 +22,6 @@ test('length of posts should be incremented', () => {
 test('message of posts should be incremented correct', () => {
     //1. test data
     let action = addPostActionCreator('it-kamasutra')
-
     //2. action
     let newState = profileReducer(state,action)
     //3. expectation

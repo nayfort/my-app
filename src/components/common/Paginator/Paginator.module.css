@@ -1,3 +1,33 @@
+.paginator {
+    padding-bottom: 15px;
+
+}
+
+.pageNumber {
+    margin: 10px;
+}
+
+.usersPhoto {
+    width: 70px;
+    height: auto;
+}
+
 .selectedPage {
+    color: darkblue;
+    font-size: large;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.nonSelectedPage {
+    color: black;
+    font-size: large;
+    cursor: pointer;
+}
+.totalPages {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: dodgerblue;
+    font-size: 15pt;
+    cursor: pointer;
 }
