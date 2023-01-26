@@ -26,7 +26,7 @@ return (
     <div>
         {!editMode &&
             <div>
-                <span onClick={activateEditMode}>{props.status || '---'}</span>
+                <b>Status:</b> <span onClick={activateEditMode}>{props.status || '---'}</span>
             </div>
         }
         {editMode &&
