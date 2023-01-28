@@ -86,5 +86,5 @@ export const savePhoto = (file) => async (dispatch) => {
                 dispatch(savePhotoSuccess(response.data.data.photos));
             }
 }
-//12345
+//12344
 export default profileReducer;
