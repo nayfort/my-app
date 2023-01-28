@@ -28,6 +28,8 @@ const ProfileDataForm = ({profile, handleSubmit}) => {
     </Form>
 }
 
+//1
+
 const ProfileDataFormReduxForm = reduxForm ({form: 'edit-profile'})(ProfileDataForm)
 
 export default ProfileDataFormReduxForm;
