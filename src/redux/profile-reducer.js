@@ -46,7 +46,7 @@ const profileReducer = (state = initialState, action) => {
         case DELETE_POST: {
             return {
                 ...state,
-                posts: state.posts.filter(p => p.id != action.postId) }
+                posts: state.posts.filter(p => p.id !== action.postId) }
         }
         case SAVE_PHOTO_SUCCESS: {
             return {
@@ -86,7 +86,5 @@ export const savePhoto = (file) => async (dispatch) => {
                 dispatch(savePhotoSuccess(response.data.data.photos));
             }
 }
-
-//22543
 
 export default profileReducer;
