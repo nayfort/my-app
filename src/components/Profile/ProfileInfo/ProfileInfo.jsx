@@ -19,6 +19,10 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
         }
     }
 
+    const onSubmit = data => {
+
+    }
+
     return (
         <div>
             <div className={classes.descriptionBlock}>

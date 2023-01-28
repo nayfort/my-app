@@ -1,24 +1,24 @@
 import React from "react";
 import {Form, reduxForm} from "redux-form";
-import {CreateField, Input} from "../../common/FormsControls/FormsControls";
-import {LoginForm} from "../../Login/Login";
+import {CreateField, Input, Textarea} from "../../common/FormsControls/FormsControls";
 
-const ProfileDataForm = ({profile}) => {
-    return <Form>
-        <div><button onClick={() => {}}>Save</button></div>
+const ProfileDataForm = ({profile, handleSubmit}) => {
+    return <Form onSubmit={handleSubmit}>
+        <div><button>Save</button></div>
         <div>
             <b>Full name:</b> {CreateField("Full name", "fullName", [], Input)}
         </div>
         <div>
-            <b>Looking for a job:</b> {profile.lookingForAJob ? 'yes' : 'no'}
+            <b>Looking for a job:</b>
+            {CreateField("", "lookingForAJob", [], Input, {type: "checkbox"})}
         </div>
-        {profile.lookingForAJob &&
             <div>
-                <b>My professional skills:</b> {profile.lookingForAJobDescription}
+                <b>My professional skills:</b>
+                {CreateField("My skills", "lookingForAJobDescription", [], Textarea)}
             </div>
-        }
         <div>
             <b>About me:</b> {profile.aboutMe}
+            {CreateField("About me", "aboutMe", [], Textarea)}
         </div>
         {/*<div>*/}
         {/*    <b>Contacts:</b> {Object.keys(profile.contacts).map(key => {*/}
