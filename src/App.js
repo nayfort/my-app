@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar/NavBar";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {HashRouter, BrowserRouter, Route, withRouter} from "react-router-dom";
+import {HashRouter, BrowserRouter, Route, withRouter, Switch, Redirect} from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
@@ -20,8 +20,16 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 
 
 class App extends React.Component {
+    catchAllUnhandledErrors = (promise, reason) => {
+        alert('Some error occured')
+        //console.error(promiseRejectionEvent)
+    }
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener('unhandlerejection', this.catchAllUnhandledErrors)
+    }
+    componentWillUnmount() {
+        window.removeEventListener('unhandlerejection', this.catchAllUnhandledErrors)
     }
 
     render() {
@@ -34,6 +42,8 @@ class App extends React.Component {
                         <HeaderContainer/>
                         <NavBar/>
                         <div className='app-wrapper-content'>
+                            <Switch>
+                                <Route exact path="/" render={() => <Redirect to={"/profile"} />}/>
                             <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)}/>
 
                             <Route path="/users" render={() => <UsersContainer/>}/>
@@ -43,6 +53,8 @@ class App extends React.Component {
                             <Route path="/music" render={() => <Music/>}/>
                             <Route path="/news" render={() => <News/>}/>
                             <Route path="/login" render={() => <Login/>}/>
+                            <Route path="*" render={() => <div>404 NOT FOUND</div>}/>
+                            </Switch>
                         </div>
                     </div>
         );
@@ -59,11 +71,11 @@ let AppContainer = compose(
 
 let MainApp = (props) => {
     return (
-        <HashRouter>
+        <BrowserRouter>
         <Provider store={store}>
             <AppContainer />
         </Provider>
-    </HashRouter>
+    </BrowserRouter>
     )
 }
 
