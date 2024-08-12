@@ -1,7 +1,4 @@
 import profileReducer, {addPostActionCreator, deletePost} from "./profile-reducer";
-import {render, screen} from "@testing-library/react";
-import App from "../App";
-import axios from "axios";
 
 let state = {
     posts: [
